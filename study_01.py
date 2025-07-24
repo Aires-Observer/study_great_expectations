@@ -4,7 +4,7 @@ import os
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 # 1. 读取测试数据
-df = pd.read_csv(os.path.join(current_dir, "test_data_01.csv"))
+df = pd.read_csv(os.path.join(current_dir, "test_data/test_data_01.csv"))
 # GX支持pandas DataFrame、spark DataFrame、SQL数据库表、CSV、Parquet文件或自定义Batch作为数据源
 print(df.to_markdown())
 
@@ -65,5 +65,5 @@ results = gx_df.validate()
 # 结果中会包含每个期望规则的验证状态、失败的行数、异常值等信息
 
 # 5. 输出结果
-with open(os.path.join(current_dir, "test_result_01.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "validate_result/test_result_01.json"), "w", encoding="utf-8") as f:
     f.write(str(results))

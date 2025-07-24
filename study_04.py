@@ -8,7 +8,7 @@ from customized_expectations import ExpectColumnValuesIsGreaterOrEqualToday
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
 # 1. 读取测试数据
-test_df = pd.read_csv(os.path.join(current_dir, "test_data_02.csv"))
+test_df = pd.read_csv(os.path.join(current_dir, "test_data/test_data_02.csv"))
 print(test_df.to_markdown())
 
 # 2. 获取GX context
@@ -45,6 +45,6 @@ result_format = {
 results = validator.validate(result_format=result_format)
 
 # 9. 输出校验结果
-with open(os.path.join(current_dir, "test_result_04.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "validate_result/test_result_04.json"), "w", encoding="utf-8") as f:
     f.write(str(results))
 

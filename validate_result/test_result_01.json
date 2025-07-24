@@ -1186,20 +1186,20 @@
     "success_percent": 52.17391304347826
   },
   "meta": {
-    "great_expectations_version": "0.18.2",
+    "great_expectations_version": "0.18.17",
     "expectation_suite_name": "default",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-15T10:05:08.857351+08:00"
+      "run_time": "2025-07-25T03:31:22.445461+08:00"
     },
     "batch_kwargs": {
-      "ge_batch_id": "2225eb2b-6120-11f0-95df-e0d4648bf6a9"
+      "ge_batch_id": "c7d95a9f-68c4-11f0-95bb-e0d4648bf6a9"
     },
     "batch_markers": {},
     "batch_parameters": {},
-    "validation_time": "20250715T020508.857351Z",
+    "validation_time": "20250724T193122.445461Z",
     "expectation_suite_meta": {
-      "great_expectations_version": "0.18.2"
+      "great_expectations_version": "0.18.17"
     }
   }
 }
