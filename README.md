@@ -1,0 +1,32 @@
+# 概念
+
+context：上下文，代表项目实例
+
+asset：数据资产，代表数据源某一时刻的快照
+
+batch：数据资产的快照，实际上数据资产除非覆写否则不会改变，但是只有batch能够参与校验
+
+suite：规则集，数据质量校验规则的集合
+
+validator：校验器，通过绑定suite和batch来执行校验，可以用它添加期望规则、执行数据质量校验、保存校验结果等，不能直接对suite来添加规则，怀疑可能是需要batch中的字段作为参考
+
+checkpoint：可以通过绑定validator执行；也可以通过手动设置来批量校验自动生成数据文档并持久化
+
+# 初始化目录
+
+在使用GX前需要初始化工作目录，目的是创建标准化的工作环境和配置文件，确保数据验证流程的规范性和可维护性
+
+初始化命令：`great_exepectation init`
+
+初始化后的目录如下
+
+- `great_expectations/`：根目录，也可能就是 `gx/`，是项目的核心目录，所有配置，规则和输出都存储在这里，其中有一个关键的配置文件 `great_expectation.yml`，这是主配置文件，定义数据源、存储后端、插件等全局设置
+- `expectations/`：存储所有的suite，每个suite保存为一个json文件
+- `checkpoints/`：定义数据验证的触发点和执行流程，每个checkpoint是一个YAML文件
+- `plugins/`：存放自定义的插件或者代码
+- `uncommitted/`：存储临时或敏感文件
+  - `data_docs/`：自动生成的数据文档（HTML报告），可视化验证结果
+  - `validations`：每次验证运行时的详细结果（JSON格式）
+  - `config_variables.yml`：敏感配置比如数据库密码，通过环境变量引用
+
+[官方文档链接](https://docs.greatexpectations.io/docs/reference/learn/#)
