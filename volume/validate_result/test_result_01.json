@@ -1190,25 +1190,14 @@
     "expectation_suite_name": "default",
     "run_id": {
       "run_name": null,
-<<<<<<< HEAD:validate_result/test_result_01.json
-      "run_time": "2025-07-25T03:31:22.445461+08:00"
+      "run_time": "2025-07-26T05:52:29.707006+00:00"
     },
     "batch_kwargs": {
-      "ge_batch_id": "c7d95a9f-68c4-11f0-95bb-e0d4648bf6a9"
+      "ge_batch_id": "b74628c6-69e4-11f0-be1d-96e4a96b23d8"
     },
     "batch_markers": {},
     "batch_parameters": {},
-    "validation_time": "20250724T193122.445461Z",
-=======
-      "run_time": "2025-07-26T04:19:30.103861+00:00"
-    },
-    "batch_kwargs": {
-      "ge_batch_id": "b9915612-69d7-11f0-83ef-9ad8591536bd"
-    },
-    "batch_markers": {},
-    "batch_parameters": {},
-    "validation_time": "20250726T041930.103763Z",
->>>>>>> 52af338 (feat: update custom expectation and package environment dependencies):volume/validate_result/test_result_01.json
+    "validation_time": "20250726T055229.706940Z",
     "expectation_suite_meta": {
       "great_expectations_version": "0.18.17"
     }

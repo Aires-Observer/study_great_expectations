@@ -3,12 +3,11 @@ import pandas as pd
 import great_expectations as gx
 from great_expectations.datasource.fluent import Datasource, DataAsset, BatchRequest
 from great_expectations.validator.validator import Validator
-<<<<<<<< HEAD:study_04.py
-from customized_expectations import ExpectColumnValuesIsGreaterOrEqualToday
-========
 from customized_expectations.expect_column_values_to_meet_date_condition_v1 import ExpectColumnValuesToMeetDateConditionV1
->>>>>>>> 52af338 (feat: update custom expectation and package environment dependencies):test_04.py
 
+# 通过继承Expectation类并改写_validate方法来实现自定义的期望
+# 支持对pandas和Spark DataFrame的验证
+# 这里是对pandas的验证
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
 # 1. 读取测试数据
@@ -36,13 +35,10 @@ suite = context.add_or_update_expectation_suite(expectation_suite_name=suite_nam
 validator: Validator = context.get_validator(batch_request=batch_request, expectation_suite_name=suite_name)
 
 # 8. 添加期望规则
-<<<<<<<< HEAD:study_04.py
-validator.expect_column_values_is_greater_or_equal_today(column="order_date", date = '2024-09-08', operator=">=")
-========
 validator.expect_column_values_to_meet_date_condition_v1(column="order_date", date='2024-09-08', operator=">=")
->>>>>>>> 52af338 (feat: update custom expectation and package environment dependencies):test_04.py
+validator.expect_column_values_to_be_in_set("payment_method", ["credit_card", "paypal", "bank_transfer", "cash"])
 
-# 10、统一设置输出格式
+# 10、统一设置输出格式（实际上这种方式自定义的期望无法直接响应GX的输出格式）
 result_format = {
     "result_format": "COMPLETE", 
     "unexpected_index_column_names": ["order_id"],

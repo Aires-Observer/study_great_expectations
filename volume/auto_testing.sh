@@ -3,7 +3,7 @@
 fail_list=()
 success_list=()
 
-for script in volume/test_*.py; do
+for script in test_*.py; do
     echo "Running $script ..."
     if python "$script"; then
         success_list+=("$script")
