@@ -1,4 +1,4 @@
 # .gitignore
 .venv/
-__pycache__/
 gx/
+Dockerfile_V1

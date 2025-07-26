@@ -1,0 +1,511 @@
+{
+  "success": false,
+  "results": [
+    {
+      "success": false,
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_meet_date_condition",
+        "kwargs": {
+          "column": "order_date",
+          "batch_id": "test_07_pandas_data_source-test_07_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "element_count": 30,
+        "unexpected_count": 29,
+        "unexpected_percent": 100.0,
+        "partial_unexpected_list": [
+          "2024-10-31",
+          "2025-03-10",
+          "2025-06-30",
+          "2024-11-11",
+          "2025-02-26",
+          "2024-10-17",
+          "2025-03-20",
+          "2024-07-30",
+          "2025-03-27",
+          "2025-05-15",
+          "2025-04-30",
+          " ",
+          "2025-04-29",
+          "abc",
+          "2024-08-25",
+          "2024-09-26",
+          "2025",
+          "2024-09-29",
+          "2024-12-23",
+          "2025-05"
+        ],
+        "unexpected_index_column_names": [
+          "index"
+        ],
+        "missing_count": 1,
+        "missing_percent": 3.3333333333333335,
+        "unexpected_percent_total": 96.66666666666667,
+        "unexpected_percent_nonmissing": 100.0,
+        "partial_unexpected_counts": [
+          {
+            "value": " ",
+            "count": 1
+          },
+          {
+            "value": "2024-07-30",
+            "count": 1
+          },
+          {
+            "value": "2024-08-25",
+            "count": 1
+          },
+          {
+            "value": "2024-09-26",
+            "count": 1
+          },
+          {
+            "value": "2024-09-29",
+            "count": 1
+          },
+          {
+            "value": "2024-10-17",
+            "count": 1
+          },
+          {
+            "value": "2024-10-31",
+            "count": 1
+          },
+          {
+            "value": "2024-11-11",
+            "count": 1
+          },
+          {
+            "value": "2024-12-23",
+            "count": 1
+          },
+          {
+            "value": "2025",
+            "count": 1
+          },
+          {
+            "value": "2025-02-26",
+            "count": 1
+          },
+          {
+            "value": "2025-03-10",
+            "count": 1
+          },
+          {
+            "value": "2025-03-20",
+            "count": 1
+          },
+          {
+            "value": "2025-03-27",
+            "count": 1
+          },
+          {
+            "value": "2025-04-29",
+            "count": 1
+          },
+          {
+            "value": "2025-04-30",
+            "count": 1
+          },
+          {
+            "value": "2025-05",
+            "count": 1
+          },
+          {
+            "value": "2025-05-15",
+            "count": 1
+          },
+          {
+            "value": "2025-06-30",
+            "count": 1
+          },
+          {
+            "value": "abc",
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          {
+            "order_date": "2024-10-31",
+            "index": 0
+          },
+          {
+            "order_date": "2025-03-10",
+            "index": 1
+          },
+          {
+            "order_date": "2025-06-30",
+            "index": 2
+          },
+          {
+            "order_date": "2024-11-11",
+            "index": 3
+          },
+          {
+            "order_date": "2025-02-26",
+            "index": 4
+          },
+          {
+            "order_date": "2024-10-17",
+            "index": 5
+          },
+          {
+            "order_date": "2025-03-20",
+            "index": 6
+          },
+          {
+            "order_date": "2024-07-30",
+            "index": 7
+          },
+          {
+            "order_date": "2025-03-27",
+            "index": 8
+          },
+          {
+            "order_date": "2025-05-15",
+            "index": 9
+          },
+          {
+            "order_date": "2025-04-30",
+            "index": 10
+          },
+          {
+            "order_date": " ",
+            "index": 11
+          },
+          {
+            "order_date": "2025-04-29",
+            "index": 13
+          },
+          {
+            "order_date": "abc",
+            "index": 14
+          },
+          {
+            "order_date": "2024-08-25",
+            "index": 15
+          },
+          {
+            "order_date": "2024-09-26",
+            "index": 16
+          },
+          {
+            "order_date": "2025",
+            "index": 17
+          },
+          {
+            "order_date": "2024-09-29",
+            "index": 18
+          },
+          {
+            "order_date": "2024-12-23",
+            "index": 19
+          },
+          {
+            "order_date": "2025-05",
+            "index": 20
+          }
+        ],
+        "unexpected_list": [
+          "2024-10-31",
+          "2025-03-10",
+          "2025-06-30",
+          "2024-11-11",
+          "2025-02-26",
+          "2024-10-17",
+          "2025-03-20",
+          "2024-07-30",
+          "2025-03-27",
+          "2025-05-15",
+          "2025-04-30",
+          " ",
+          "2025-04-29",
+          "abc",
+          "2024-08-25",
+          "2024-09-26",
+          "2025",
+          "2024-09-29",
+          "2024-12-23",
+          "2025-05",
+          "2025-07-15",
+          "2025-05-08",
+          "2025 -03-16",
+          "2024-08-13",
+          "2025-06-10",
+          "2025-07-17",
+          "2024-10-22",
+          "2025-06-03",
+          "2024-09-02"
+        ],
+        "unexpected_index_list": [
+          {
+            "order_date": "2024-10-31",
+            "index": 0
+          },
+          {
+            "order_date": "2025-03-10",
+            "index": 1
+          },
+          {
+            "order_date": "2025-06-30",
+            "index": 2
+          },
+          {
+            "order_date": "2024-11-11",
+            "index": 3
+          },
+          {
+            "order_date": "2025-02-26",
+            "index": 4
+          },
+          {
+            "order_date": "2024-10-17",
+            "index": 5
+          },
+          {
+            "order_date": "2025-03-20",
+            "index": 6
+          },
+          {
+            "order_date": "2024-07-30",
+            "index": 7
+          },
+          {
+            "order_date": "2025-03-27",
+            "index": 8
+          },
+          {
+            "order_date": "2025-05-15",
+            "index": 9
+          },
+          {
+            "order_date": "2025-04-30",
+            "index": 10
+          },
+          {
+            "order_date": " ",
+            "index": 11
+          },
+          {
+            "order_date": "2025-04-29",
+            "index": 13
+          },
+          {
+            "order_date": "abc",
+            "index": 14
+          },
+          {
+            "order_date": "2024-08-25",
+            "index": 15
+          },
+          {
+            "order_date": "2024-09-26",
+            "index": 16
+          },
+          {
+            "order_date": "2025",
+            "index": 17
+          },
+          {
+            "order_date": "2024-09-29",
+            "index": 18
+          },
+          {
+            "order_date": "2024-12-23",
+            "index": 19
+          },
+          {
+            "order_date": "2025-05",
+            "index": 20
+          },
+          {
+            "order_date": "2025-07-15",
+            "index": 21
+          },
+          {
+            "order_date": "2025-05-08",
+            "index": 22
+          },
+          {
+            "order_date": "2025 -03-16",
+            "index": 23
+          },
+          {
+            "order_date": "2024-08-13",
+            "index": 24
+          },
+          {
+            "order_date": "2025-06-10",
+            "index": 25
+          },
+          {
+            "order_date": "2025-07-17",
+            "index": 26
+          },
+          {
+            "order_date": "2024-10-22",
+            "index": 27
+          },
+          {
+            "order_date": "2025-06-03",
+            "index": 28
+          },
+          {
+            "order_date": "2024-09-02",
+            "index": 29
+          }
+        ],
+        "unexpected_index_query": "df.filter(items=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], axis=0)"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_match_date_format",
+        "kwargs": {
+          "column": "order_date",
+          "date_format": "YYYY-MM-DD",
+          "batch_id": "test_07_pandas_data_source-test_07_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "element_count": 30,
+        "unexpected_count": 5,
+        "unexpected_percent": 17.24137931034483,
+        "partial_unexpected_list": [
+          " ",
+          "abc",
+          "2025",
+          "2025-05",
+          "2025 -03-16"
+        ],
+        "unexpected_index_column_names": [
+          "index"
+        ],
+        "missing_count": 1,
+        "missing_percent": 3.3333333333333335,
+        "unexpected_percent_total": 16.666666666666664,
+        "unexpected_percent_nonmissing": 17.24137931034483,
+        "partial_unexpected_counts": [
+          {
+            "value": " ",
+            "count": 1
+          },
+          {
+            "value": "2025",
+            "count": 1
+          },
+          {
+            "value": "2025 -03-16",
+            "count": 1
+          },
+          {
+            "value": "2025-05",
+            "count": 1
+          },
+          {
+            "value": "abc",
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          {
+            "order_date": " ",
+            "index": 11
+          },
+          {
+            "order_date": "abc",
+            "index": 14
+          },
+          {
+            "order_date": "2025",
+            "index": 17
+          },
+          {
+            "order_date": "2025-05",
+            "index": 20
+          },
+          {
+            "order_date": "2025 -03-16",
+            "index": 23
+          }
+        ],
+        "unexpected_list": [
+          " ",
+          "abc",
+          "2025",
+          "2025-05",
+          "2025 -03-16"
+        ],
+        "unexpected_index_list": [
+          {
+            "order_date": " ",
+            "index": 11
+          },
+          {
+            "order_date": "abc",
+            "index": 14
+          },
+          {
+            "order_date": "2025",
+            "index": 17
+          },
+          {
+            "order_date": "2025-05",
+            "index": 20
+          },
+          {
+            "order_date": "2025 -03-16",
+            "index": 23
+          }
+        ],
+        "unexpected_index_query": "df.filter(items=[11, 14, 17, 20, 23], axis=0)"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "evaluation_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 2,
+    "successful_expectations": 0,
+    "unsuccessful_expectations": 2,
+    "success_percent": 0.0
+  },
+  "meta": {
+    "great_expectations_version": "0.18.17",
+    "expectation_suite_name": "test_07_suite",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-07-26T04:19:59.999459+00:00"
+    },
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250726T041959.822818Z",
+      "pandas_data_fingerprint": "244fffc23d799b0fc46aac27da1c09a8"
+    },
+    "active_batch_definition": {
+      "datasource_name": "test_07_pandas_data_source",
+      "data_connector_name": "fluent",
+      "data_asset_name": "test_07_asset",
+      "batch_identifiers": {}
+    },
+    "validation_time": "20250726T041959.999386Z",
+    "checkpoint_name": null
+  }
+}

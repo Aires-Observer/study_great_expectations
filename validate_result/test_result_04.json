@@ -4,7 +4,7 @@
     {
       "success": false,
       "expectation_config": {
-        "expectation_type": "expect_column_values_is_greater_or_equal_today",
+        "expectation_type": "expect_column_values_to_meet_date_condition_v1",
         "kwargs": {
           "column": "order_date",
           "date": "2024-09-08",
@@ -15,14 +15,17 @@
       },
       "result": {
         "element_count": 30,
-        "unexpected_count": 7,
-        "unexpected_percent": 23.3,
+        "unexpected_count": 10,
+        "unexpected_percent": 33.3,
         "unexpected_list": [
           "2024-07-30",
           " ",
           null,
           "abc",
           "2024-08-25",
+          "2025",
+          "2025-05",
+          "2025 -03-16",
           "2024-08-13",
           "2024-09-02"
         ],
@@ -32,6 +35,9 @@
           12,
           14,
           15,
+          17,
+          20,
+          23,
           24,
           29
         ]
@@ -56,14 +62,14 @@
     "expectation_suite_name": "test_04_suite",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-25T03:33:06.925251+08:00"
+      "run_time": "2025-07-26T04:19:39.565939+00:00"
     },
     "batch_spec": {
       "batch_data": "PandasDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250724T193306.899917Z",
-      "pandas_data_fingerprint": "cbf76e60b1fb18140994db33d8308026"
+      "ge_load_time": "20250726T041939.545678Z",
+      "pandas_data_fingerprint": "244fffc23d799b0fc46aac27da1c09a8"
     },
     "active_batch_definition": {
       "datasource_name": "test_04_pandas_data_source",
@@ -71,7 +77,7 @@
       "data_asset_name": "test_04_asset",
       "batch_identifiers": {}
     },
-    "validation_time": "20250724T193306.925251Z",
+    "validation_time": "20250726T041939.565865Z",
     "checkpoint_name": null
   }
 }
