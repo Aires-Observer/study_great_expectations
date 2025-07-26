@@ -12,7 +12,8 @@ COPY volume/auto_testing.sh /app/auto_testing.sh
 
 USER root
 RUN apt-get update && \
-    apt-get install -y expect && \
+    apt-get install -y expect dos2unix && \
+    dos2unix /app/auto_testing.sh && \
     chmod +x /app/init_gx.sh /app/auto_testing.sh
 
 CMD ["/bin/bash", "-c", "\
