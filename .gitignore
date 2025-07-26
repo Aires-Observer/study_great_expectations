@@ -2,3 +2,4 @@
 .venv/
 gx/
 Dockerfile_V1
+__pycache__/
