@@ -460,13 +460,13 @@
     "expectation_suite_name": "test_07_suite",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-26T05:53:10.211027+00:00"
+      "run_time": "2025-07-26T07:28:23.957981+00:00"
     },
     "batch_spec": {
       "batch_data": "SparkDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250726T055308.015586Z"
+      "ge_load_time": "20250726T072821.803739Z"
     },
     "active_batch_definition": {
       "datasource_name": "test_07_spark_data_source",
@@ -474,7 +474,7 @@
       "data_asset_name": "test_07_asset",
       "batch_identifiers": {}
     },
-    "validation_time": "20250726T055310.210775Z",
+    "validation_time": "20250726T072823.957915Z",
     "checkpoint_name": null
   }
 }

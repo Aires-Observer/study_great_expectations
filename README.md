@@ -47,6 +47,10 @@ docker build -t gx .
 docker run -it --name gx_test -v "./volume:/app/volume" gx
 ```
 
-容器运行后会自动初始化GX以及对所有test文件进行测试，最终输出 `All test scripts finished successfully.`则表示环境搭建无误
+容器运行后会自动初始化GX并进入 `/app/volume`目录，该目录挂载了项目下的 `volume`目录
+
+可以通过手动执行 `auto_testing.py`的方式进行GX验证测试，最终输出 `所有测试脚本均执行成功！`则表示环境搭建无误
+
+同时可以观察到vakudate_result目录下的结果文件发生了修改，这是由于GX结果文件中的验证时间发生了改变
 
 如果不对spark数据源进行测试，参考requirements.txt本地安装相关库依赖也可以运行，注意需要初始化GX
