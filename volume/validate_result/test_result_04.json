@@ -101,13 +101,13 @@
     "expectation_suite_name": "test_04_suite",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-26T07:27:55.722569+00:00"
+      "run_time": "2025-07-26T14:38:35.707575+00:00"
     },
     "batch_spec": {
       "batch_data": "PandasDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250726T072755.594053Z",
+      "ge_load_time": "20250726T143835.647667Z",
       "pandas_data_fingerprint": "a041243d96f02dff44746aa803219c40"
     },
     "active_batch_definition": {
@@ -116,7 +116,7 @@
       "data_asset_name": "test_04_asset",
       "batch_identifiers": {}
     },
-    "validation_time": "20250726T072755.722494Z",
+    "validation_time": "20250726T143835.707489Z",
     "checkpoint_name": null
   }
 }

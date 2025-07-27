@@ -31,7 +31,7 @@ batch_request: BatchRequest = data_asset.build_batch_request()
 
 # 6. 创建期望规则集
 suite_name = "test_05_suite"
-suite = context.add_or_update_expectation_suite(expectation_suite_name=suite_name)
+context.add_or_update_expectation_suite(expectation_suite_name=suite_name)
 
 # 7. 获取验证器
 validator: Validator = context.get_validator(batch_request=batch_request, expectation_suite_name=suite_name)
