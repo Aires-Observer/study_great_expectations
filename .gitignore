@@ -1,5 +1,6 @@
 # .gitignore
 .venv/
 gx/
-Dockerfile_V1
+Dockerfile_V*
 __pycache__/
+.gitattributes

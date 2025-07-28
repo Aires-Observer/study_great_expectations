@@ -1190,14 +1190,14 @@
     "expectation_suite_name": "default",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-26T14:38:26.626402+00:00"
+      "run_time": "2025-07-28T21:14:13.909947+00:00"
     },
     "batch_kwargs": {
-      "ge_batch_id": "30a96f5e-6a2e-11f0-a36b-5e5a8ef6cabf"
+      "ge_batch_id": "cffaad6e-6bf7-11f0-a38a-2ed9807bff66"
     },
     "batch_markers": {},
     "batch_parameters": {},
-    "validation_time": "20250726T143826.626317Z",
+    "validation_time": "20250728T211413.909904Z",
     "expectation_suite_meta": {
       "great_expectations_version": "0.18.17"
     }

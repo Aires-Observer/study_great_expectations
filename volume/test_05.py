@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import great_expectations as gx
 from great_expectations.datasource.fluent import Datasource, DataAsset, BatchRequest
 from great_expectations.validator.validator import Validator
