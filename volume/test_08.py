@@ -54,5 +54,3 @@ result_df = ParsedGXResult(results).get_dataframe()
 print(result_df.fillna("nan").to_markdown())
 # 对于object类型中的空值，to_markdown()渲染时会输出为空字符串所以这里做个填充替换
 
-# TODO 测试condition_parser和row_condition这两个参数组合是否比两个期望的结合验整个字段更快
-# TODO 看看ignore_row_if参数是否可以用
