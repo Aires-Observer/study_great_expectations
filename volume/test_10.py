@@ -41,7 +41,7 @@ result_format = {
 }
 
 results = validator.validate(result_format=result_format)
-with open(os.path.join(current_dir, "validate_result/test_result_10.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/test_result_10.json"), "w", encoding="utf-8") as f:
     f.write(str(results))
 
 result_df = ParsedGXResult(results).get_dataframe()

@@ -65,6 +65,6 @@ results = gx_df.validate()
 # 结果中会包含每个期望规则的验证状态、失败的行数、异常值等信息
 
 # 5. 输出结果
-with open(os.path.join(current_dir, "validate_result/test_result_01.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/test_result_01.json"), "w", encoding="utf-8") as f:
     f.write(str(results))
 # 这种校验方式属于GX的简单校验，输出日志中不会有Calculating Metrics等信息

@@ -484,17 +484,17 @@
     "success_percent": 0.0
   },
   "meta": {
-    "great_expectations_version": "0.18.17",
+    "great_expectations_version": "0.18.21",
     "expectation_suite_name": "test_06_suite",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-31T03:39:30.166522+00:00"
+      "run_time": "2025-08-05T02:27:28.776967+00:00"
     },
     "batch_spec": {
       "batch_data": "PandasDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250731T033930.054770Z",
+      "ge_load_time": "20250805T022728.666610Z",
       "pandas_data_fingerprint": "efa5d16f73e7c8fe65d5e9e86c247ed8"
     },
     "active_batch_definition": {
@@ -503,7 +503,7 @@
       "data_asset_name": "test_06_asset",
       "batch_identifiers": {}
     },
-    "validation_time": "20250731T033930.166436Z",
+    "validation_time": "20250805T022728.776915Z",
     "checkpoint_name": null
   }
 }

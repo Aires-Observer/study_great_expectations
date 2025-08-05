@@ -28,8 +28,7 @@ spark_suite_name = "temp_test_spark_suite"
 context.add_or_update_expectation_suite(expectation_suite_name=spark_suite_name)
 spark_validator: Validator = context.get_validator(batch_request=spark_batch_request, expectation_suite_name=spark_suite_name)
 
-spark_validator.expect_column_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">=", days=0)
-spark_validator.expect_column_days_diff_to_meet_condition(column_A="order_date", column_B="product_date", operator=">=", days=0)
+spark_validator.expect_columns_arithmetic_to_equals_result_column(left_column="list_price", right_column="discount", result_column="sale_price", operator="*", column_list=["list_price", "discount", "sale_price"])
 
 # ===== pandas 测试 =====
 print("=== Testing Pandas Engine ===")
@@ -41,8 +40,7 @@ pandas_suite_name = "temp_test_pandas_suite"
 context.add_or_update_expectation_suite(expectation_suite_name=pandas_suite_name)
 pandas_validator: Validator = context.get_validator(batch_request=pandas_batch_request, expectation_suite_name=pandas_suite_name)
 
-pandas_validator.expect_column_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">=", days=0)
-pandas_validator.expect_column_days_diff_to_meet_condition(column_A="order_date", column_B="product_date", operator=">=", days=0)
+pandas_validator.expect_columns_arithmetic_to_equals_result_column(left_column="list_price", right_column="discount", result_column="sale_price", operator="*", column_list=["list_price", "discount", "sale_price"])
 
 # ===== 验证结果 =====
 result_format = {
@@ -53,12 +51,12 @@ result_format = {
 
 print("=== Spark Results ===")
 spark_results = spark_validator.validate(result_format=result_format)
-with open(os.path.join(current_dir, "validate_result/temp_test_result_spark.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/temp_test_result_spark.json"), "w", encoding="utf-8") as f:
     f.write(str(spark_results))
 
 print("=== Pandas Results ===")
 pandas_results = pandas_validator.validate(result_format=result_format)
-with open(os.path.join(current_dir, "validate_result/temp_test_result_pandas.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/temp_test_result_pandas.json"), "w", encoding="utf-8") as f:
     f.write(str(pandas_results))
 
 print("Testing completed!")

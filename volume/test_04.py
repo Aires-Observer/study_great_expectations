@@ -5,10 +5,9 @@ from great_expectations.datasource.fluent import Datasource, DataAsset, BatchReq
 from great_expectations.validator.validator import Validator
 import expectations
 
-# 这是一个通过继承ColumnMapExpectation来实现原本的expect_column_values_to_meet_date_condition期望
-# 相比较于V1，代码量更少且可以直接使用GX的内置验证逻辑，而无需手动处理验证结果
+# 通过继承Expectation类并改写_validate方法来实现自定义的期望
+# 支持对pandas和Spark DataFrame的验证
 # 这里是对pandas的验证
-# 补充：增加对自定义expect_column_values_to_match_date_format期望的校验
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
 # 1. 读取测试数据
@@ -19,31 +18,30 @@ print(test_df.to_markdown())
 context = gx.get_context()
 
 # 3. 注册pandas数据源
-source_name = "test_06_pandas_data_source"
+source_name = "test_04_pandas_data_source"
 data_source: Datasource = context.sources.add_or_update_pandas(name=source_name)
 
 # 4、创建数据资产
-data_asset: DataAsset = data_source.add_dataframe_asset(name="test_06_asset", dataframe=test_df)
+data_asset: DataAsset = data_source.add_dataframe_asset(name="test_04_asset", dataframe=test_df)
 
 # 5. 创建批处理请求
 batch_request: BatchRequest = data_asset.build_batch_request()
 
 # 6. 创建期望规则集
-suite_name = "test_06_suite"
+suite_name = "test_04_suite"
 context.add_or_update_expectation_suite(expectation_suite_name=suite_name)
 
 # 7. 获取验证器
 validator: Validator = context.get_validator(batch_request=batch_request, expectation_suite_name=suite_name)
 
 # 8. 添加期望规则
-validator.expect_column_values_to_meet_date_condition(column="order_date", date="2024-09-07", operator=">=")
-validator.expect_column_values_to_match_date_format(column="order_date", date_format="YYYY-MM-DD")
-validator.expect_column_values_to_be_between("discount", min_value=0.2)
+validator.expect_column_values_to_meet_date_condition_v1(column="order_date", date='2024-09-08', operator=">=")
+validator.expect_column_values_to_be_in_set("payment_method", ["credit_card", "paypal", "bank_transfer", "cash"])
 
-# 10、统一设置输出格式
+# 10、统一设置输出格式（实际上这种方式自定义的期望无法直接响应GX的输出格式）
 result_format = {
     "result_format": "COMPLETE", 
-    "unexpected_index_column_names": ["index"],
+    "unexpected_index_column_names": ["order_id"],
     "return_unexpected_index_query": True,
 }
 
@@ -51,6 +49,6 @@ result_format = {
 results = validator.validate(result_format=result_format)
 
 # 9. 输出校验结果
-with open(os.path.join(current_dir, "validate_result/test_result_06.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/test_result_04.json"), "w", encoding="utf-8") as f:
     f.write(str(results))
 

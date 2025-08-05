@@ -4,10 +4,24 @@ from great_expectations.execution_engine import PandasExecutionEngine, SparkDFEx
 from great_expectations.expectations.metrics.map_metric_provider import ColumnPairMapMetricProvider, column_pair_condition_partial
 import pyspark.sql.functions as F
 from pyspark.sql.column import Column as SparkColumn
+import operator as op 
 
-class ColumnDaysDiffMeetCondition(ColumnPairMapMetricProvider):
+class ColumnPairDaysDiffMeetCondition(ColumnPairMapMetricProvider):
     condition_metric_name = "column_values.days_diff_meet_condition"
     condition_value_keys = ("operator", "days") # 不需要传递column_A和column_B
+
+    @staticmethod
+    def _get_operator(diff, days, operator):
+        ops = {
+            ">=": op.ge,
+            "<=": op.le,
+            ">": op.gt,
+            "<": op.lt,
+            "==": op.eq
+        }
+        if operator not in ops:
+            raise ValueError(f"Unsupported operator: {operator}. Supported operators are: {', '.join(ops.keys())}")
+        return ops[operator](diff, days)
 
     # ColumnPairMapMetricProvider的方法签名固定是Column_A和Column_B
     # 这里不同的是自定义参数operator和days必须从kwargs中获取，不能显式传递
@@ -32,22 +46,9 @@ class ColumnDaysDiffMeetCondition(ColumnPairMapMetricProvider):
         return mask
     # spark dataframe继承多列校验时，返回的日期值会在验证结果中序列化为"YYYY-MM-DDTHH:MM:SS" 这种 ISO 格式
     # 这是GX框架的默认行为，属于兼容和通用性设计，对结果进行处理时需要注意这一点
-    # 如果原始数据中有其他非日期格式的数据就会返回原始值（真奇怪的特性）
+    # 如果原始数据中有其他非日期格式的数据就会返回原始值（奇怪的特性）
 
-    @staticmethod
-    def _get_operator(diff, days, operator):
-        ops = {
-            ">=": diff >= days,
-            "<=": diff <= days,
-            ">": diff > days,
-            "<": diff < days,
-            "==": diff == days
-        }
-        if operator not in ops:
-            raise ValueError(f"Unsupported operator: {operator}. Supported operators are: {', '.join(ops.keys())}")
-        return ops[operator]
-    
-class ExpectColumnDaysDiffToMeetCondition(ColumnPairMapExpectation):
+class ExpectColumnPairDaysDiffToMeetCondition(ColumnPairMapExpectation):
     """
     验证两列日期的差值是否满足指定的条件
 
@@ -57,11 +58,11 @@ class ExpectColumnDaysDiffToMeetCondition(ColumnPairMapExpectation):
     - 验证column_A - column_B的天数差，支持0和负数天数差
 
     示例:
-        expect_column_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">=", days=0)
+        expect_column_pair_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">=", days=0)
         验证product_date的日期是否大于等于order_date的日期
-        expect_column_days_diff_to_meet_condition(column_A="product_date", column_B="order_date")
+        expect_column_pair_days_diff_to_meet_condition(column_A="product_date", column_B="order_date")
         验证product_date的日期是否等于order_date的日期
-        expect_column_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">", days=-3)
+        expect_column_pair_days_diff_to_meet_condition(column_A="product_date", column_B="order_date", operator=">", days=-3)
         验证product_date的日期是否大于order_date的3天前的日期
     """
     map_metric = "column_values.days_diff_meet_condition"

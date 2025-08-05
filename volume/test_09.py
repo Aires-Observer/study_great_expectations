@@ -6,37 +6,33 @@ import expectations
 from pyspark.sql import SparkSession
 from utils.parse_gx_result import ParsedGXResult
     
-# GX的内置期望和基于ColumnMapMetricProvider自定义的期望都会跳过空值，即结果json中的missing_count
-# 但是实际数据校验中我们常常期待输出的失败结果是包括空值及其对应索引行的
-# 这是GX验证中非常底层的逻辑，目前没有什么好的方法能避免跳过
-# 如果想输出的结果中包含空值的行，可以通过结合expect_column_values_to_not_be_null期望验证
-# 从GX提取结果时通过meta来统一取出来
+# 前面已经尝试通过期望组合来规避跳过空值的问题，但是又产生了新的问题
+# 如果有两条验证规则都校验同一个字段，并且都用了组合期望的方式来解决跳过空值的问题
+# 本质上是expect_column_values_to_not_be_null对一个字段验证了两次，后者会覆盖前者
+# 此时我们就可以考虑通过row_condition这个参数来解决这个问题
+
 current_dir = os.path.dirname(os.path.realpath(__file__))
 spark = SparkSession.builder.appName("gx_test").getOrCreate()
 
 test_df = spark.read.csv(os.path.join(current_dir, "test_data/test_data_02.csv"), header=True, inferSchema=True)
 print(test_df.show())
 context = gx.get_context()
-source_name = "test_08_spark_data_source"
+source_name = "test_09_spark_data_source"
 data_source: Datasource = context.sources.add_or_update_spark(name=source_name)
-data_asset: DataAsset = data_source.add_dataframe_asset(name="test_08_asset", dataframe=test_df)
+data_asset: DataAsset = data_source.add_dataframe_asset(name="test_09_asset", dataframe=test_df)
 batch_request: BatchRequest = data_asset.build_batch_request()
-suite_name = "test_08_suite"
+suite_name = "test_09_suite"
 context.add_or_update_expectation_suite(expectation_suite_name=suite_name)
 validator: Validator = context.get_validator(batch_request=batch_request, expectation_suite_name=suite_name)
 
-# 这里对每个字段的校验都用两个期望来实现，最后通过meta来合并输出结果
+# 这里一共有两条验证规则，通过row_condition参数来实现输出四个result避免覆盖问题
+# row_condition参数的值可以是任意SQL表达式，GX会将其转换为Spark SQL的表达式
+# condition_parser参数可以指定解析row_condition的方式，pandas dataframe的解析器是pandas
 validator.expect_column_values_to_meet_date_condition(column="order_date", date="2024-09-07", operator=">=", meta={"Rule": "R0001"})
-validator.expect_column_values_to_not_be_null(column="order_date", meta={"Rule": "R0001"})
+validator.expect_column_values_to_not_be_null(column="order_date", meta={"Rule": "R0001"}, row_condition="1=1", condition_parser="spark")
 
 validator.expect_column_values_to_match_date_format(column="order_date", date_format="YYYY-MM-DD", meta={"Rule": "R0002"})
-validator.expect_column_values_to_not_be_null(column="order_date", meta={"Rule": "R0002"})
-
-validator.expect_column_values_to_be_between("discount", min_value=0.2, meta={"Rule": "R0003"})
-validator.expect_column_values_to_not_be_null(column="discount", meta={"Rule": "R0003"})
-
-validator.expect_column_values_to_be_in_set("status", ["paid", "pending", "cancelled", "refunded"], meta={"Rule": "R0004"})
-validator.expect_column_values_to_not_be_null(column="status", meta={"Rule": "R0004"})
+validator.expect_column_values_to_not_be_null(column="order_date", meta={"Rule": "R0002"}, row_condition="2=2", condition_parser="spark")
 
 result_format = {
     "result_format": "COMPLETE", 
@@ -44,12 +40,10 @@ result_format = {
     "return_unexpected_index_query": True,
 }
 
-
 results = validator.validate(result_format=result_format)
-with open(os.path.join(current_dir, "validate_result/test_result_08.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(current_dir, "result/test_result_09.json"), "w", encoding="utf-8") as f:
     f.write(str(results))
 
 result_df = ParsedGXResult(results).get_dataframe()
 print(result_df.fillna("nan").to_markdown())
 # 对于object类型中的空值，to_markdown()渲染时会输出为空字符串所以这里做个填充替换
-

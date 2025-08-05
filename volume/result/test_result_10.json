@@ -190,17 +190,17 @@
     "success_percent": 0.0
   },
   "meta": {
-    "great_expectations_version": "0.18.17",
+    "great_expectations_version": "0.18.21",
     "expectation_suite_name": "test_10_suite",
     "run_id": {
       "run_name": null,
-      "run_time": "2025-07-31T03:40:37.922527+00:00"
+      "run_time": "2025-08-05T02:28:37.712623+00:00"
     },
     "batch_spec": {
       "batch_data": "SparkDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250731T034036.325167Z"
+      "ge_load_time": "20250805T022836.010032Z"
     },
     "active_batch_definition": {
       "datasource_name": "test_10_spark_data_source",
@@ -208,7 +208,7 @@
       "data_asset_name": "test_10_asset",
       "batch_identifiers": {}
     },
-    "validation_time": "20250731T034037.922455Z",
+    "validation_time": "20250805T022837.712556Z",
     "checkpoint_name": null
   }
 }

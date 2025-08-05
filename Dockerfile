@@ -4,7 +4,7 @@ FROM python:3.11.7-slim
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y openjdk-17-jre-headless git && \
+    apt-get install -y openjdk-17-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 # apt-get安装后清理apt缓存减小镜像体积
@@ -18,4 +18,4 @@ COPY requirements.txt /tmp/
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 # --no-cache-dir选项可以避免pip缓存，减小镜像体积
 
-CMD ["/bin/bash", "-c", "cd /app/study_great_expectations && exec /bin/bash"]
+CMD ["/bin/bash", "-c", "cd /app/volume && exec /bin/bash"]

@@ -1,0 +1,270 @@
+{
+  "success": false,
+  "results": [
+    {
+      "success": true,
+      "expectation_config": {
+        "expectation_type": "expect_table_row_count_to_be_between",
+        "kwargs": {
+          "min_value": 30,
+          "max_value": 50,
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": 30
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "expectation_type": "expect_table_row_count_to_equal",
+        "kwargs": {
+          "value": 30,
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": 30
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "expectation_type": "expect_table_column_count_to_be_between",
+        "kwargs": {
+          "min_value": 5,
+          "max_value": 10,
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": 11
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "expectation_type": "expect_table_column_count_to_equal",
+        "kwargs": {
+          "value": 11,
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": 11
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "expectation_type": "expect_table_columns_to_match_ordered_list",
+        "kwargs": {
+          "column_list": [
+            "new_column",
+            "index",
+            "order_id",
+            "price",
+            "payment_method",
+            "user_id",
+            "product_id",
+            "quantity",
+            "order_date",
+            "status",
+            "city",
+            "discount"
+          ],
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": [
+          "index",
+          "order_id",
+          "price",
+          "payment_method",
+          "user_id",
+          "product_id",
+          "quantity",
+          "order_date",
+          "status",
+          "city",
+          "discount"
+        ],
+        "details": {
+          "mismatched": [
+            {
+              "Expected Column Position": 0,
+              "Expected": "new_column",
+              "Found": "index"
+            },
+            {
+              "Expected Column Position": 1,
+              "Expected": "index",
+              "Found": "order_id"
+            },
+            {
+              "Expected Column Position": 2,
+              "Expected": "order_id",
+              "Found": "price"
+            },
+            {
+              "Expected Column Position": 3,
+              "Expected": "price",
+              "Found": "payment_method"
+            },
+            {
+              "Expected Column Position": 4,
+              "Expected": "payment_method",
+              "Found": "user_id"
+            },
+            {
+              "Expected Column Position": 5,
+              "Expected": "user_id",
+              "Found": "product_id"
+            },
+            {
+              "Expected Column Position": 6,
+              "Expected": "product_id",
+              "Found": "quantity"
+            },
+            {
+              "Expected Column Position": 7,
+              "Expected": "quantity",
+              "Found": "order_date"
+            },
+            {
+              "Expected Column Position": 8,
+              "Expected": "order_date",
+              "Found": "status"
+            },
+            {
+              "Expected Column Position": 9,
+              "Expected": "status",
+              "Found": "city"
+            },
+            {
+              "Expected Column Position": 10,
+              "Expected": "city",
+              "Found": "discount"
+            },
+            {
+              "Expected Column Position": 11,
+              "Expected": "discount",
+              "Found": null
+            }
+          ]
+        }
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "expectation_type": "expect_table_columns_to_match_set",
+        "kwargs": {
+          "column_set": [
+            "product_id",
+            "price",
+            "order_id",
+            "index",
+            "quantity",
+            "discount",
+            "order_date",
+            "status",
+            "payment_method",
+            "user_id",
+            "city"
+          ],
+          "batch_id": "test_11_pandas_data_source-test_11_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "observed_value": [
+          "index",
+          "order_id",
+          "price",
+          "payment_method",
+          "user_id",
+          "product_id",
+          "quantity",
+          "order_date",
+          "status",
+          "city",
+          "discount"
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "evaluation_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 6,
+    "successful_expectations": 4,
+    "unsuccessful_expectations": 2,
+    "success_percent": 66.66666666666666
+  },
+  "meta": {
+    "great_expectations_version": "0.18.21",
+    "expectation_suite_name": "test_11_suite",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-08-05T07:19:38.850249+00:00"
+    },
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250805T071938.815977Z",
+      "pandas_data_fingerprint": "efa5d16f73e7c8fe65d5e9e86c247ed8"
+    },
+    "active_batch_definition": {
+      "datasource_name": "test_11_pandas_data_source",
+      "data_connector_name": "fluent",
+      "data_asset_name": "test_11_asset",
+      "batch_identifiers": {}
+    },
+    "validation_time": "20250805T071938.850189Z",
+    "checkpoint_name": null
+  }
+}

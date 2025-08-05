@@ -5,10 +5,24 @@ from great_expectations.expectations.metrics import ColumnMapMetricProvider, col
 import pyspark.sql.functions as F
 from pyspark.sql.column import Column as SparkColumn
 import pendulum
+import operator as op
 
 class ColumnValuesMeetDateCondition(ColumnMapMetricProvider):
     condition_metric_name = "column_values.meet_date_condition"
     condition_value_keys = ("date", "operator")
+
+    @staticmethod
+    def _get_date_operator(col_dates, date, operator):
+        ops = {
+            ">=": op.ge,
+            "<=": op.le,
+            ">": op.gt,
+            "<": op.lt,
+            "==": op.eq
+        }
+        if operator not in ops:
+            raise ValueError(f"Unsupported operator: {operator}. Supported operators are: {', '.join(ops.keys())}")
+        return ops[operator](col_dates, date)
 
     @column_condition_partial(engine=PandasExecutionEngine)
     def _pandas(cls, column: pd.Series, date: str, operator: str, **kwargs):
@@ -23,19 +37,6 @@ class ColumnValuesMeetDateCondition(ColumnMapMetricProvider):
         col_dates = F.to_date(column, "yyyy-MM-dd")
         mask = col_dates.isNotNull() & cls._get_date_operator(col_dates, date, operator)
         return mask
-
-    @staticmethod
-    def _get_date_operator(col_dates, date, operator):
-        ops = {
-            ">=": col_dates >= date,
-            "<=": col_dates <= date,
-            ">": col_dates > date,
-            "<": col_dates < date,
-            "==": col_dates == date
-        }
-        if operator not in ops:
-            raise ValueError(f"Unsupported operator: {operator}. Supported operators are: {', '.join(ops.keys())}")
-        return ops[operator]
     
 class ExpectColumnValuesToMeetDateCondition(ColumnMapExpectation):
     """
