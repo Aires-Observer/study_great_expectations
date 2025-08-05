@@ -1,0 +1,6 @@
+# .gitignore
+.venv/
+gx/
+Dockerfile_V*
+__pycache__/
+.gitattributes

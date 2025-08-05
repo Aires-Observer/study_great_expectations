@@ -1,0 +1,124 @@
+{
+  "success": false,
+  "results": [
+    {
+      "success": false,
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_meet_date_condition_v1",
+        "kwargs": {
+          "column": "order_date",
+          "date": "2024-09-08",
+          "operator": ">=",
+          "batch_id": "test_04_pandas_data_source-test_04_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "element_count": 30,
+        "unexpected_count": 10,
+        "unexpected_percent": 33.3,
+        "unexpected_list": [
+          "2024-07-30",
+          null,
+          "   ",
+          "abc",
+          "2024-08-25",
+          "2025",
+          "2025-03",
+          "2024 -08-13",
+          "2025/06/03",
+          "2024-09-02"
+        ],
+        "unexpected_index_list": [
+          7,
+          11,
+          12,
+          14,
+          15,
+          22,
+          23,
+          24,
+          28,
+          29
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_in_set",
+        "kwargs": {
+          "column": "payment_method",
+          "value_set": [
+            "credit_card",
+            "paypal",
+            "bank_transfer",
+            "cash"
+          ],
+          "batch_id": "test_04_pandas_data_source-test_04_asset"
+        },
+        "meta": {}
+      },
+      "result": {
+        "element_count": 30,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "unexpected_index_column_names": [
+          "order_id"
+        ],
+        "missing_count": 4,
+        "missing_percent": 13.333333333333334,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": [],
+        "unexpected_list": [],
+        "unexpected_index_list": [],
+        "unexpected_index_query": "df.filter(items=[], axis=0)"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "evaluation_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 2,
+    "successful_expectations": 1,
+    "unsuccessful_expectations": 1,
+    "success_percent": 50.0
+  },
+  "meta": {
+    "great_expectations_version": "0.18.17",
+    "expectation_suite_name": "test_04_suite",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-07-31T03:39:05.638411+00:00"
+    },
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250731T033905.587080Z",
+      "pandas_data_fingerprint": "efa5d16f73e7c8fe65d5e9e86c247ed8"
+    },
+    "active_batch_definition": {
+      "datasource_name": "test_04_pandas_data_source",
+      "data_connector_name": "fluent",
+      "data_asset_name": "test_04_asset",
+      "batch_identifiers": {}
+    },
+    "validation_time": "20250731T033905.638350Z",
+    "checkpoint_name": null
+  }
+}
